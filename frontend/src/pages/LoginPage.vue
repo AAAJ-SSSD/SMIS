@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
+import { LOGO_URL } from '@/branding'
 import LanguageSwitch from '@/components/LanguageSwitch.vue'
 import { safeRedirect } from '@/router/guard'
 import { useAuthStore } from '@/stores/auth'
@@ -56,7 +57,7 @@ async function loginAs(user) {
       <div class="d-flex justify-end mb-2"><LanguageSwitch /></div>
 
       <div class="text-center mb-6">
-        <v-icon icon="mdi-school" size="48" color="primary" />
+        <img :src="LOGO_URL" :alt="$t('app.logoAlt')" width="160" height="132" data-test="login-logo" />
         <h1 class="text-h5 mt-2">{{ $t('app.name') }}</h1>
         <p class="text-medium-emphasis">{{ $t('login.subtitle') }}</p>
       </div>

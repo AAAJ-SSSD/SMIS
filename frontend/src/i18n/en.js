@@ -1,6 +1,7 @@
 export default {
   app: {
     name: 'School Management',
+    logoAlt: 'Jeddah World Academy logo',
     devMode: 'DEV MODE — test login is enabled. Never use in production.',
     language: 'Language',
     logout: 'Sign out',

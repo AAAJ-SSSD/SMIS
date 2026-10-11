@@ -22,6 +22,14 @@ async function mountLogin(query = {}) {
 describe('LoginPage', () => {
   beforeEach(() => vi.restoreAllMocks())
 
+  it('shows the school logo', async () => {
+    mockBackend()
+    const logo = (await mountLogin()).find('[data-test="login-logo"]')
+
+    expect(logo.attributes('src')).toBe('/logo.png')
+    expect(logo.attributes('alt')).toBe('شعار أكاديمية جدة العالمية')
+  })
+
   it('hides the Google button when Google login is off', async () => {
     mockBackend({ google: false })
     const wrapper = await mountLogin()

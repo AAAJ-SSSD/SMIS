@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useDisplay, useLocale } from 'vuetify'
+import { LOGO_URL } from '@/branding'
 import LanguageSwitch from '@/components/LanguageSwitch.vue'
 import { applyLocale } from '@/i18n'
 import { buildMenu } from '@/navigation'
@@ -32,7 +33,11 @@ async function logout() {
 
 <template>
   <v-navigation-drawer v-model="drawer" :permanent="mdAndUp" data-test="sidebar">
-    <v-list-item class="py-4" :title="$t('app.name')" prepend-icon="mdi-school" />
+    <v-list-item class="py-4" :title="$t('app.name')">
+      <template #prepend>
+        <img :src="LOGO_URL" :alt="$t('app.logoAlt')" width="44" height="36" class="me-3" data-test="sidebar-logo" />
+      </template>
+    </v-list-item>
     <v-divider />
     <v-list nav density="comfortable">
       <v-list-item

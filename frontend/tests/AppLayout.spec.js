@@ -12,13 +12,17 @@ const routes = [
   { path: '/login', name: 'login', component: stub },
 ]
 
-async function sidebarFor(permissions) {
+async function mountLayout(permissions) {
   const { list, router } = plugins({ routes })
   useAuthStore().user = { name: 'U', email: 'u@example.test', locale: 'ar', roles: [], permissions }
   await router.push('/')
   const wrapper = mountInApp(AppLayout, list)
   await flush()
-  return wrapper.find('[data-test="sidebar"]').text()
+  return wrapper
+}
+
+async function sidebarFor(permissions) {
+  return (await mountLayout(permissions)).find('[data-test="sidebar"]').text()
 }
 
 describe('AppLayout sidebar', () => {
@@ -36,5 +40,12 @@ describe('AppLayout sidebar', () => {
     expect(text).toContain('المستخدمون')
     expect(text).toContain('استيراد المستخدمين')
     expect(text).toContain('سجل التدقيق')
+  })
+
+  it('shows the school logo with translated alt text', async () => {
+    const logo = (await mountLayout([])).find('[data-test="sidebar-logo"]')
+
+    expect(logo.attributes('src')).toBe('/logo.png')
+    expect(logo.attributes('alt')).toBe('شعار أكاديمية جدة العالمية')
   })
 })
