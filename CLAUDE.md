@@ -7,7 +7,11 @@ Full run instructions and the role/permission matrix are in `README.md`.
 ## Status
 - **Phase 1 done (2026-10-01):** auth (Google school-domain, dev login, break-glass), roles/permissions,
   user admin + CSV import, audit log. 122 Pest + 21 Vitest tests passing.
-- Not yet verified: Docker/Sail stack (no Docker on the dev machine yet), real Google OAuth, the UI in a real browser.
+- Docker stack verified 2026-10-11 (all 5 containers up, dev login + 403s smoke-tested). Git repo initialised.
+- Not yet verified: real Google OAuth, the UI clicked through in a real browser.
+- On Windows run compose directly from `backend/`: `WWWUSER=1000 WWWGROUP=1000 docker compose up -d`
+  (artisan: `docker compose exec laravel.test php artisan ...`). `backend/.env` = Docker/MySQL;
+  `backend/.env.sqlite` = no-Docker variant (copy over `.env` to use it).
 - Phases are built one at a time; stop after each phase and summarise.
 
 ## Decisions already made (don't revisit without asking)
