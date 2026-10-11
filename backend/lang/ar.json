@@ -1,0 +1,8 @@
+{
+    "(and :count more error)": "(وخطأ آخر)",
+    "(and :count more errors)": "(و:count أخطاء أخرى)",
+    "Unauthenticated.": "يجب تسجيل الدخول.",
+    "This action is unauthorized.": "ليست لديك صلاحية لتنفيذ هذا الإجراء.",
+    "Not Found": "غير موجود",
+    "Too Many Attempts.": "محاولات كثيرة جداً."
+}
